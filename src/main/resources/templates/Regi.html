@@ -2,10 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Welcome to Telcoservice Provisioning</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f4f8;
             margin: 0;
             padding: 0;
             color: #333;
@@ -13,58 +17,77 @@
         .container {
             width: 100%;
             max-width: 600px;
-            margin: 20px auto;
+            margin: 40px auto;
             background-color: #ffffff;
-            border-radius: 8px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .header {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #0056b3, #007bff);
             color: #ffffff;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
         }
         .header img {
             width: 120px;
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .header h1 {
+            font-size: 28px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         .content {
-            padding: 20px;
+            padding: 40px 30px;
             text-align: center;
         }
-        .content h1 {
-            color: #007bff;
+        .content h2 {
+            color: #0056b3;
             font-size: 24px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .content p {
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: #555555;
-            margin: 0;
+            margin: 0 0 15px;
+        }
+        .highlight {
+            background-color: #e6f3ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
         }
         .button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-size: 16px;
+            font-weight: 600;
             color: #ffffff;
-            background-color: #007bff;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
+            border-radius: 30px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.2);
         }
         .button:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,123,255,0.3);
         }
         .footer {
-            background-color: #f1f1f1;
-            color: #888888;
             text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            border-top: 1px solid #dddddd;
+            padding: 20px;
+            background: linear-gradient(135deg, #1d8cf8, #0056b3);
+            color: white;
         }
     </style>
 </head>
@@ -72,24 +95,29 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src="https://drive.google.com/file/d/1rLiSGRXLpODnAXXaBnPE-vnyyqEBUWXP/view?usp=download" alt="Telcoservice Provisioning Logo" />
-            <h1>Welcome to Telcoservice Provisioning</h1>
+            <img src="https://raw.githubusercontent.com/shivu2002a/email-service/refs/heads/main/src/main/resources/static/Blue-and-orange.jfif" alt="Telcoservice Provisioning Logo" />
+            <h1>Welcome to Telcoservice</h1>
         </div>
-
+        
         <!-- Content -->
         <div class="content">
-            <h1>Hello, <span th:text="${userName}">Customer</span>!</h1>
-            <p>Thank you for joining Telcoservice Provisioning! We are excited to have you on board.</p>
-            <p>Your account has been successfully created. Here are your details:</p>
-            <p><strong>Email:</strong> <span th:text="${email}">user@example.com</span></p>
-            <p><strong>Registered Date:</strong> <span th:text="${registrationDate}">01-01-2024</span></p>
-            <p>Please activate your account by clicking the button below:</p>
-            <a th:href="@{${activationLink}}" class="button">Activate Your Account</a>
+            <h2>Hello, <span th:text="${dto.username}">Customer</span>!</h2>
+            <p>We're thrilled to welcome you to Telcoservice Provisioning! Your journey to seamless telecommunications solutions starts here.</p>
+            
+            <div class="highlight">
+                <p><strong>Your Account Details:</strong></p>
+                <p><strong>Email:</strong> <span th:text="${dto.email}">user@example.com</span></p>
+                <p><strong>Address:</strong> <span th:text="${dto.address}">Sample address</span></p>
+            </div>
+            
+            <p>Get ready to experience top-notch service and cutting-edge solutions tailored just for you!</p>
+            
+            <!-- <a th:href="@{${activationLink}}" class="button">Activate Your Account</a> -->
         </div>
-
+        
         <!-- Footer -->
         <div class="footer">
-            <p>If you have any questions, feel free to contact us at <a href="mailto:support@telcoservice.com">support@telcoservice.com</a></p>
+            <!-- <p>Questions? Reach out to us at <a href="mailto:telcoservice.helpdesk@gmail.com" style="color: #007bff;">support@telcoservice.com</a></p> -->
             <p>&copy; 2024 Telcoservice Provisioning. All rights reserved.</p>
         </div>
     </div>

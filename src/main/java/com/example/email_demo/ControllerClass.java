@@ -13,5 +13,17 @@ public class ControllerClass {
     public String home() {
         return "Regi";
     }
+
+    @GetMapping("/activation")
+    public String activation() {
+        return "ServiceActivation";
+    }
+
+    @GetMapping("/termination")
+    public String termination() {
+        return "ServiceTermination";
+    }
+
+
     
 }
